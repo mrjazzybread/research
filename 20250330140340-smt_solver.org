@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       8f29335f-55b9-4a20-bb2f-f3feb8807d02
+:END:
+#+title: SMT solver

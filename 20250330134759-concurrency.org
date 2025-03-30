@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       d2ed0e57-54c6-4cb2-867a-2ff7a36028dc
+:END:
+#+title: Concurrency
+A concurrent program is one where several threads are competing for
+the same resource.

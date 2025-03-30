@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       79d0fef4-20f0-45af-9b03-e189534b420c
+:END:
+#+title: Gospel models

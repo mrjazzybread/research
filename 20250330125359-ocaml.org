@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       b3f8eb53-1b01-487c-aeaa-4d8c7574e836
+:END:
+#+title: OCaml
+OCaml is a functional programming language derived from the ML
+dialect. As well as having support for common functional programming
+language features such as pattern matching, recursion and Algebraic
+Data Types, it also features several imperative language features such
+as mutable references, arrays and support for Object Oriented
+Programming.
+
+As of OCaml 5.0, OCaml now has support for [[id:d2ed0e57-54c6-4cb2-867a-2ff7a36028dc][concurrency]] and [[id:6192132a-a942-4de6-8198-7386b5923d91][parallelism]]
+through [[id:8b01e1a3-736e-49c2-96f4-df7e959b503e][domains]] and [[id:c62830fe-075a-4ff6-add7-fc5a5c73c16b][effect handlers]].

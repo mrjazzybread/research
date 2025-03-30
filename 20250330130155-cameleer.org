@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       11ecc203-2053-41b7-9c2d-5fcab5e9999f
+:END:
+#+title: Cameleer
+Cameleer is a [[id:a71bff28-7d04-4241-80da-e8f58d98960b][deductive verification]] tool that converts [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]]
+annotated [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] files to WhyML, the programming language for the [[id:c676ac93-502f-46d5-9dcd-6aba6500582d][Why3]]
+prover. Since [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] currently has no support for implementation
+files, it uses a separate branch of the [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] repository.

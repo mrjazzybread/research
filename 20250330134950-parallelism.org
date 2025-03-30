@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       6192132a-a942-4de6-8198-7386b5923d91
+:END:
+#+title: Parallelism
+A parallel program is one where several threads are executing at the
+same time.

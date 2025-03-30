@@ -1,0 +1,50 @@
+:PROPERTIES:
+:ID:       27926a9e-056a-43bb-886e-37f4a973bf98
+:END:
+#+title: Gospel
+Gospel (Generic [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] Specification Language) is a contract based
+specification language for the OCaml language built on [[id:aaab620a-b308-4e61-b8f6-2bb38e7ad156][Separation
+Logic]].  It is used to annotate [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] interface files with
+specifications describing the behaviour of [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] functions.  Gospel
+does not provide any utilities for verification, it is meant to be a
+front end tool that can interface with various proof environments.  To
+give an example of what Gospel specifications look like, here is a
+small example:
+#+ATTR_LATEX: :environment gospel
+#+begin_example ocaml
+type queue
+(*@ mutable model : integer sequence *)
+
+val push : queue -> int -> unit
+(*@ let _ = push q x in
+    ensures Sequence.cons x (old q) = q *)
+
+val pop : queue -> int
+(*@ requires x <> Sequence.empty
+    let x = pop q in
+    ensures Sequence.cons x q = old q *)
+#+end_example
+
+Before we can write specifications for the ~push~ and ~pop~ functions, we
+first need a way to reason over the ~queue~ type.  To this end, we
+annotate the [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] type ~queue~ with a [[id:c497b030-83e9-4dd4-820c-5356fd5f08fb][Gospel type specification]] stating
+that the [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]] of this type is a sequence of integers.  Thus, in the
+specification for ~push~ and ~pop~ we can use values of type ~queue~ as if
+they were values of type ~integer sequence~.
+
+In ~push~, we have a single postcondition which states that the updated
+queue is equal to the ~old~ queue with the pushed value appended to its
+head.  The ~old~ annotation is used to describe a mutable value before
+the function is called.
+
+In ~pop~, as well as having a postcondition that describe the inverse
+behaviour of the previous function, we also have a precondition
+stating that the queue cannot be empty.
+
+Although Gospel is tailored towards [[id:a71bff28-7d04-4241-80da-e8f58d98960b][deductive program verification]], it
+provides no utilities for this, relying on various backends to ensure
+the validity of a specification.  The current backends available to
+Gospel are
+
+- [[id:11ecc203-2053-41b7-9c2d-5fcab5e9999f][Cameleer]]
+- [[id:da1483c1-f61a-468c-bfd1-3afc6985a994][Peter]]

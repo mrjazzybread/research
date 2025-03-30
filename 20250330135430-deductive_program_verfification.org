@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       a71bff28-7d04-4241-80da-e8f58d98960b
+:END:
+#+title: Deductive program verification
+Deductive program verification is the process of ensuring that some
+program satisfies a given specification. This is done using some proof
+environment that generate proof obligations and subsequently
+discharging them using some verification platform, most commonly
+either automated theorem provers or interactive proof assistants.

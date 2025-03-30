@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       04859df3-6922-4c19-b7f2-ce7988a4484b
+:END:
+#+title: Rocq
+Rocq, (formerly Coq) is a general purpose interactive theorem prover
+that can be used in mathematical proofs and program verification.

@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       c676ac93-502f-46d5-9dcd-6aba6500582d
+:END:
+#+title: Why3
+Why3 is a tool tailored for [[id:a71bff28-7d04-4241-80da-e8f58d98960b][deductive program verification]]. It
+generates proof obligations from programs written in WhyML, its
+dedicated specification and programming language. These proof
+obligations are in turn proved either with an [[id:8f29335f-55b9-4a20-bb2f-f3feb8807d02][SMT solver]] (most
+commonly Alt-ergo, CVC, Z3) or a proof assistant such as [[id:04859df3-6922-4c19-b7f2-ce7988a4484b][Rocq]].

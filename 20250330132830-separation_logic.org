@@ -1,0 +1,4 @@
+:PROPERTIES:
+:ID:       aaab620a-b308-4e61-b8f6-2bb38e7ad156
+:END:
+#+title: Separation Logic
