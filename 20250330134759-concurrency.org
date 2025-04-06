@@ -3,4 +3,4 @@
 :END:
 #+title: Concurrency
 A concurrent program is one where several threads are competing for
-the same resource.
+the same resources.

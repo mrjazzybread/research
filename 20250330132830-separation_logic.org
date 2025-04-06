@@ -2,3 +2,25 @@
 :ID:       aaab620a-b308-4e61-b8f6-2bb38e7ad156
 :END:
 #+title: Separation Logic
+
+Separation Logic is a an extension to Hoare Logic with several
+primitives that allow users to reason over programs that manipulate
+the heap. Specifically, it allows users to write specifications that
+describe notions of separation and ownership in a direct way.
+
+- Points to predicate: The formula \[l\leadsto M\] states that \[l\]
+  holds the value \[M\]. Additionally, we state that we have exclusive
+  ownership of the memory location \[l\].
+
+- Separating Conjunction : The formula \[H1 * H2\] states that the
+  heap described by \[H1\] and the heap described by \[H2\] are
+  disjoint in memory. Using this in combination with \[\leadsto\]
+  allows us to easily talk about disjointedness of memory locations.
+
+- Heap Entailment: The formula \[H1 \Rightarrow H2\] states that any heap that
+  satisfies \[H1\] also satisfies \[H2\]. This is particularly useful
+  for describing the inference rules for separation logic
+
+- Magic Wand: The formula \[H1 \xrightarrow{}\star\ H2\] states that if
+  you surrender ownership of the resources described by \[H1\] you get
+  ownership of \[H2\]. Useful for describing borrowing mechanisms.

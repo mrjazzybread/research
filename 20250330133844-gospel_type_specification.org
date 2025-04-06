@@ -1,4 +1,0 @@
-:PROPERTIES:
-:ID:       c497b030-83e9-4dd4-820c-5356fd5f08fb
-:END:
-#+title: Gospel type specification

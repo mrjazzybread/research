@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       8e3b4c95-87bf-4865-9b52-b15afdef92fc
+:END:
+#+title: Hoare Logic
+Hoare Logic is the main reasoning framework through which [[id:a71bff28-7d04-4241-80da-e8f58d98960b][deductive
+program verification]] is done with. The most important logical
+construct of this logic are /Hoare Triples/ such as \[\{P\}\ s\
+\{\lambda x.Q\}\],
+where \[P\] describes the possible states the program \[s\] is allowed
+to be executed in and \[\lambda x.\ Q \] is a predicate parameterised by the
+return value of \[s\] that describes the state of the program at the
+end of \[s\].
+
+In order to deduce if a /Hoare Triple/ is correct, one of the most
+commonly used tactic is some variant of /weakest precondition
+calculus/. Given a postcondition \[Q\] and a program \[s\], it computes
+the most general (weakest) precondition \[P'\] for which the triple
+\[\{P'\}s\{Q\}\] holds and checks if \[P \xrightarrow{} P'\] where
+\[P\] is the user supplied precondition.

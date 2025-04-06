@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       aabac408-0f7a-4d52-98e3-d8351e19f401
+:END:
+#+title: Gospel Namespaces
+[[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] namespaces have never been well defined, it is unclear
+what is the difference between a [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] name, and [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] name
+and when you could use one or the other. Currently, my proposal is:
+
+- Names that are introduces in [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] specifications are never allowed
+  to be used in [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] code.
+
+- [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] functions are never allowed to referred to in [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]]
+  specification. Obvious exception being the [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] specification
+  header, e.g.
+  #+ATTR_LATEX: :environment ocamlenv
+  #+begin_example ocaml
+  val f : int -> int
+  (*@ let x = f y in ... *)
+  #+end_example
+  The use of the name ~f~ is valid.
+
+- One can use [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] modules to qualify a [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] identifier, e.g:
+  #+ATTR_LATEX: :environment ocamlenv
+  #+begin_example ocaml
+  module M : sig
+    (*@ predicate p *)
+  end
+
+  (*@ axiom example : M.p *)
+  #+end_example
+
+- One can open [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] modules using a [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] ~open~, but only [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]]
+  names within that module are introduced into the scope.
+
+- Opening an [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] module using an [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] open introduces all [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] and
+  [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] names within that module into the scope.
+
+- Each [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] type has a [[id:82f9754c-85f3-44bf-a75b-49d0a5f8331c][lens]] associated with it. These can only be
+  used in an ownership clause in a specification or with a quantifier,
+  e.g.
+#+ATTR_LATEX: :environment ocamlenv
+  #+begin_example ocaml
+   type mut_nat
+   (*@ mutable model integer *)
+
+   val inc : mut_nat -> unit
+   (*@ let () = inc n in
+       modifies n @ mut_nat
+       ensures n = old n + 1 *)
+
+   (*@ axiom example : forall x : mut_nat @ mut_nat. x > 0 *)
+  #+end_example
+
+- Besides the previous example with the quantifiers, there are no
+  valid usages of an [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] type in a [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]]
+  specification.

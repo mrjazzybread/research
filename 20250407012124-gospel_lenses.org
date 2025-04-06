@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       82f9754c-85f3-44bf-a75b-49d0a5f8331c
+:END:
+#+title: Gospel lenses
+A lens is a light weight notation to encode [[id:aaab620a-b308-4e61-b8f6-2bb38e7ad156][Separation Logic]]
+representation predicates into [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]].
