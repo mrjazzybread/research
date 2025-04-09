@@ -4,4 +4,4 @@
 #+title: Peter
 Peter is a translation tool that converts [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] annotated [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] files
 to [[id:1e229502-1b69-47b7-95d7-6ff8cd4c68ab][CFML]]. It leverages [[id:904de8c9-8d8f-4a1e-b5f4-1539ebddbe7e][Gospel's Separation Logic semantics]] to easily
-convert Gospel specifications into the [[id:1e229502-1b69-47b7-95d7-6ff8cd4c68ab][CFML]] AST.
+convert Gospel specifications into the CFML AST.

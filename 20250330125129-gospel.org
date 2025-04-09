@@ -4,8 +4,8 @@
 #+title: Gospel
 Gospel (Generic [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] Specification Language) is a contract based
 specification language for the OCaml language built on [[id:aaab620a-b308-4e61-b8f6-2bb38e7ad156][Separation
-Logic]].  It is used to annotate [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] interface files with
-specifications describing the behaviour of [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] functions.  Gospel
+Logic]].  It is used to annotate OCaml interface files with
+specifications describing the behaviour of OCaml functions.  Gospel
 does not provide any utilities for verification, it is meant to be a
 front end tool that can interface with various proof environments.  To
 give an example of what Gospel specifications look like, here is a
@@ -27,7 +27,7 @@ val pop : queue -> int
 
 Before we can write specifications for the ~push~ and ~pop~ functions, we
 first need a way to reason over the ~queue~ type.  To this end, we
-annotate the [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] type ~queue~ with a [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] type specification stating
+annotate the OCaml type ~queue~ with a type specification stating
 that the [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]] of this type is a sequence of integers.  Thus, in the
 specification for ~push~ and ~pop~ we can use values of type ~queue~ as if
 they were values of type ~integer sequence~.

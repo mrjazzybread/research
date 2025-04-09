@@ -9,6 +9,6 @@ criteria are met:
 - It is an OCaml type with at least a single [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]] field (or a default
   model).
 
-When we have an OCaml type with no [[id:79d0fef4-20f0-45af-9b03-e189534b420c][models]], there is no representation
+When we have an OCaml type with no models, there is no representation
 for it in Gospel specifications, meaning there is no meaningful
 invariant one can express for this type

@@ -3,7 +3,7 @@
 :END:
 #+title: Separation Logic
 
-Separation Logic is a an extension to Hoare Logic with several
+Separation Logic is a an extension to [[id:8e3b4c95-87bf-4865-9b52-b15afdef92fc][Hoare Logic]] with several
 primitives that allow users to reason over programs that manipulate
 the heap. Specifically, it allows users to write specifications that
 describe notions of separation and ownership in a direct way.
