@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       2e48431b-6f20-437b-b3d9-7c426a7a5024
+:END:
+#+title: Gospel type invariants
+A type can have a [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] type invariant if any of the following
+criteria are met:
+
+- It is a Gospel type
+- It is an OCaml type with at least a single [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]] field (or a default
+  model).
+
+When we have an OCaml type with no [[id:79d0fef4-20f0-45af-9b03-e189534b420c][models]], there is no representation
+for it in Gospel specifications, meaning there is no meaningful
+invariant one can express for this type
