@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       7d6967ef-af3e-4355-9d20-11ea0fb40109
+:END:
+#+title: Gospel invariants on non-abstract types
+If an OCaml type is not abstract, its invariants can be broken by
+any modules that are not verified.

@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       001a1968-b268-4130-ae5a-0919897ed573
+:END:
+#+title: OCaml type variables in Gospel
+[[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] uses different [[id:aabac408-0f7a-4d52-98e3-d8351e19f401][namespaces]] to differentiate between [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] names
+and Gospel names.  The consequence is that OCaml names are either not
+allowed to be used in Gospel specifications or have a different
+meaning when used in a specification.  OCaml type variables fit into
+the latter category: they are allowed to be used very fluidly in
+Gospel specifications but have a different semantics.  In a [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]]
+annotation, for example:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+type 'a array
+(*@ mutable
+    model elems : 'a sequence
+    model length : integer *)
+#+end_example
+
+When we say that the ~model~ field ~elems~ has the type ~'a sequence~, ~'a~
+does not refer to the OCaml type variable, since that would be
+unsound.  Instead, we refer to the model of ~'a~, which will depend on
+the [[id:82f9754c-85f3-44bf-a75b-49d0a5f8331c][lens]] that the user uses to access the type ~'a array~.
+
+In a value description:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+val get : 'a array -> int -> 'a
+(*@ preserves arr @ loc array
+    let x = get arr i in
+    produces x @ loc
+    ensures x = arr.elems[i] *)
+#+end_example
+
+Since we parameterise the ~array~ lens with ~loc~, ~arr.elems~ will have
+type ~loc sequence~.

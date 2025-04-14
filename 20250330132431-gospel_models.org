@@ -2,3 +2,47 @@
 :ID:       79d0fef4-20f0-45af-9b03-e189534b420c
 :END:
 #+title: Gospel models
+
+[[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] models are used to give a logical representation to an [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]]
+type.  This is necessary because using OCaml types in a logical
+context is unsound due to the fact that they can be mutated and change
+over time.  Nevertheless, we need ways to talk about how these values
+evolve during the execution of a program.  There are two ways to give
+an OCaml type a ~model~:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+type string
+(*@ model : char sequence *)
+#+end_example
+
+In this case, values of type ~string~ can be used as if they were values
+of type ~char sequence~ within Gospel specifications.  Note that the
+type name ~string~ cannot be used within Gospel specifications, since it
+belongs to the OCaml [[id:aabac408-0f7a-4d52-98e3-d8351e19f401][Namespace]].  Another way to give an OCaml type a
+~model~ is:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+type 'a array
+(*@ mutable
+    model elems : 'a sequence
+    model length : integer *)
+#+end_example
+
+In this case, values of type ~'a array~ can be used as a record type
+with the fields ~elems~ and ~length~.  Additionally, the type name ~'a
+array~ can be used in Gospel specifications but only as a record type
+with the declared fields.  Given this, the declaration of ~'a array~
+can be thought as syntactic sugar for:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+(*@ type 'a array = { elems : 'a sequence; length : integer } *)
+
+type 'a array
+(*@ mutable
+    model : 'a array *)
+#+end_example
+
+A consequence of this is that we cannot apply the [[id:68f008dd-3d31-4d38-bcff-7ca5170fa481][mutable]] tag on field
+by field basis as in [[id:c676ac93-502f-46d5-9dcd-6aba6500582d][Why3]], we can only state generally if the model
+changes over time. This is unfortunate since we will have to note that
+the ~length~ field does not change over time in all our specifications.

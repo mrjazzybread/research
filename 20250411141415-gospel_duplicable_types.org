@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       e6006b9d-d1dd-4117-9753-e7b1a35c3f6f
+:END:
+#+title: Gospel duplicable types
+In [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]], we have the distinction between [[id:68f008dd-3d31-4d38-bcff-7ca5170fa481][mutable types]] and
+non-mutable types.  A mutable type is one where its [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]] can change
+over time and a non-mutable type is one where it cannot.  However, we
+may want to have a distinction between pure OCaml types and types
+that depend on mutation that is not observable by users of the API,
+meaning that the logical model remains constant.
+
+This distinction is necessary when dealing with [[id:d2ed0e57-54c6-4cb2-867a-2ff7a36028dc][concurrency]] and
+[[id:6192132a-a942-4de6-8198-7386b5923d91][parallelism]]: if an impure OCaml types does not expose any way of
+changing its model, it can be freely duplicated within a single thread
+but cannot be used by multiple threads simultaneously.
+
+In order to create this distinction within Gospel, we can have two new
+tags: ~pure~ and ~duplicable~, the former meaning that the OCaml type has
+no mutable components and the latter meaning that the OCaml type is
+allowed to use mutable values, although its logical representation
+does not change over time.
+
+By default, we assume that abstract types where none of these tags are
+present in their specification are ~pure~.  As for types that are given
+a definition:
+
+- If the type only uses ~pure~ types in its definition, we consider it
+  a ~pure~ type.
+
+- If the type only uses ~pure~ and ~duplicable~ types in its definition, but does
+  not use ~mutable~ types, then we consider it a ~duplicable~ type.
+
+- If the type uses any ~mutable~ types in its definition then we
+  consider it ~mutable~.

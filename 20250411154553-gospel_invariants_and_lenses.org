@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       77adc744-1a2f-463e-ae19-ce9d18fbd1d2
+:END:
+#+title: Gospel invariants and lenses
+The representation predicate to access a model should entail its
+invariants.

@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       7bbde711-2a32-428d-99a9-1cdece6d4201
+:END:
+#+title: Gospel persistent predicates
+We might want at some point to add persistent predicates in some form.
+Perhaps for each type having a trivial predicate to state that is of
+that type.

@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       68f008dd-3d31-4d38-bcff-7ca5170fa481
+:END:
+#+title: Gospel mutable types
+
+Like in [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]], [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] also provides a ~mutable~ keyword.  Unlike in
+OCaml, which uses it to talk about individual record fields, Gospel
+uses it to mark types whose logical [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]] changes over time.  If a
+type is marked as
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+type t
+(*@ mutable
+    model : integer *)
+#+end_example
+
+Then the ~integer~ representation of ~t~ can change.  All ~mutable~ types
+are OCaml types that contain values that can change over time.  If a
+type does not have a ~mutable~ tag, then its model remains constant.
