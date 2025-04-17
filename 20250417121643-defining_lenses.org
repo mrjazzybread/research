@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       f1d7a01c-ac6d-484b-a0b2-8621ca873322
+:END:
+#+title: Defining lenses
+Every OCaml type has a [[id:82f9754c-85f3-44bf-a75b-49d0a5f8331c][Gospel lens]] with the same name which allows
+users to access its [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]].  For example:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+type 'a array
+(*@ model : 'a sequence *)
+#+end_example
+
+Creates a lens ~'a array~ that allows a user to use values of ~'a array~
+as ~'a sequence~.  If the user did not define a ~model~ then we create a
+lens that does not provide any usable Gospel value. If the user
+defined multiple named models, we create a lens that allows to use the
+OCaml type ~'a array~ as a Gospel record type ~'a array~ where each field
+has the same name as the model.

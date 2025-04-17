@@ -42,7 +42,8 @@ type 'a array
     model : 'a array *)
 #+end_example
 
-A consequence of this is that we cannot apply the [[id:68f008dd-3d31-4d38-bcff-7ca5170fa481][mutable]] tag on field
-by field basis as in [[id:c676ac93-502f-46d5-9dcd-6aba6500582d][Why3]], we can only state generally if the model
-changes over time. This is unfortunate since we will have to note that
-the ~length~ field does not change over time in all our specifications.
+A consequence of this is that we cannot apply the [[id:68f008dd-3d31-4d38-bcff-7ca5170fa481][mutable]] tag on a
+field by field basis as in [[id:c676ac93-502f-46d5-9dcd-6aba6500582d][Why3]], we can only state generally if the
+model changes over time. This is unfortunate since we will have to
+note that the ~length~ field does not change over time in all our
+specifications.

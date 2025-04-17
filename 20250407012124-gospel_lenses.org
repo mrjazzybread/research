@@ -2,5 +2,60 @@
 :ID:       82f9754c-85f3-44bf-a75b-49d0a5f8331c
 :END:
 #+title: Gospel lenses
-A lens is a light weight notation to encode [[id:aaab620a-b308-4e61-b8f6-2bb38e7ad156][Separation Logic]]
-representation predicates into [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]].
+A /lens/ is a light weight notation to encode [[id:aaab620a-b308-4e61-b8f6-2bb38e7ad156][Separation Logic]]
+representation predicates into [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]].  Since [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] types are not
+allowed to be used directly within Gospel specifications, we use
+lenses to connect the programming world with the verification world.
+Any time an OCaml type with a model is defined, we create a lens that
+receives that type and lifts it into its logical model.  Example:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+type 'a array
+(*@ model : 'a sequence *)
+#+end_example
+
+This type declaration creates a lens named ~array~ that allows us to use
+values of type ~'a array~ as their [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]], ~'a sequence~.  Additionally,
+the ~array~ lens also receives another lens as argument which will lift
+values of type ~'a~ into an appropriate logical representation.
+Therefore, when we use the ~'a~ type variable in the ~model~ field, we are
+not referring to the OCaml type variable but rather the Gospel
+representation of the type variable ~'a~ which depends on the lens the
+user provides.
+
+Lenses have identical syntax as types and are mainly used in Gospel
+ownership clauses.  For example:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+val set : 'a array -> 'a -> int -> unit
+(*@ modifies arr @ 'a array
+    let set arr x i in
+      ensures arr[i] = x *)
+#+end_example
+
+In the ~modifies~ clause, we state that ~arr~ is lifted using the ~'a array~
+lens, meaning that its type in the specification is ~'a sequence~.  The
+name ~'a~ is overloaded in the following ways:
+
+- It is used as an OCaml type variable.
+- It is used as a Gospel type variable.
+- It is used as a Gospel lens, more specifically, it is the argument
+  that we pass to the ~array~ lens.
+
+A consequence of this is that every OCaml value declaration that uses
+type variables is parameterised by a lens that lifts it into its
+logical representation.
+
+If we wish to restrict this function to only work on values of the
+~string array~ type.
+ #+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+val set : string array -> string -> int -> unit
+(*@ modifies arr @ string array
+    let set arr x i in
+      ensures arr[i] = x *)
+#+end_example
+
+Here, we parameterise the ~array~ lens with the ~string~ lens, meaning
+that the type of ~arr~ in our specification will be ~char sequence
+sequence~, since the ~model~ of the ~string~ type is ~char sequence~.

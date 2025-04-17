@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       ee70c571-e35f-4bba-b019-0c7b047444db
+:END:
+#+title: Gospel lenses semantics
+[[id:82f9754c-85f3-44bf-a75b-49d0a5f8331c][Gospel lenses]] are used to transform obtain the logical representation
+of a program value.  Additionally, these constructs are also used to
+claim exclusive ownership of [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]] values.  When we state:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+val set : 'a array -> int -> 'a -> unit
+(*@ modifies arr @ 'a array
+    let _ = set arr i x in
+      ensures arr[i] = x *)
+#+end_example
+
+The ~modifies~ clause states that we claim ~arr~ with full ownership.
+This is connected to [[id:79d0fef4-20f0-45af-9b03-e189534b420c][Gospel models]]: since we have full ownership, we
+can access and freely modify the array ~arr~, meaning its model can also
+be used and "modified".
+
+Each lens can be defined as a [[id:aaab620a-b308-4e61-b8f6-2bb38e7ad156][Separation Logic]] representation
+predicate with the following type:
+
+\[R : \forall\ Amodel,\ ...\ .\ val \xrightarrow{} model \xrightarrow{} (val \xrightarrow{}
+Amodel \xrightarrow{} Hprop) \xrightarrow{} ... \xrightarrow{} Hprop \]
+
+Each representation predicate is parameterised by the Gospel models of
+each type variable.  The first argument is the OCaml value, which is
+of type ~val~, the type of OCaml values. The second is its model, the
+type itself will depend on the ~model~ annotation given to the type.
+The remaining arguments are the lenses to claim ownership of each type
+variable used in the OCaml type, represented by representation
+predicates.  The [[id:904de8c9-8d8f-4a1e-b5f4-1539ebddbe7e][semantics]] of the ~array~ lens would be:
+
+\[Array : \forall\ Amodel\ .\ loc \xrightarrow{} Amodel\
+sequence \xrightarrow{} (val \xrightarrow{} Amodel
+\xrightarrow{} Hprop) \xrightarrow{} Hprop \]
+
+Note that ~loc~ is a subtype of ~val~ and is the type used to represent
+mutable Gospel types.  The representation predicate for ~array~ uses ~loc~
+because the type is marked as ~mutable~ in its declaration. The next
+argument is a value of \[Amodel\ sequence\], which is the model of the
+~array~ type. The next argument is representation predicate to claim
+ownership and use the model of values of type ~'a~.
