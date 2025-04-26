@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       086ddb01-7af1-4f55-916e-0b824f8c93b6
+:END:
+#+title: Gospel functor constraints
+
+Just like we can add constraints to {{{OCaml}}} functor applications, we
+should also be allowed to add additional {{{Gospel}}} constraints. For
+example:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+module Make
+  (H : HashedType)
+  (S : SENTINELS with type t = H.t)
+  : SET with type element = H.t
+  (*@ with predicate equiv = H.equiv and
+           function  tomb = S.tomb   and
+           function  void = S.void
+           *)
+#+end_example

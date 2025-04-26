@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       4d08dbd8-659c-4fea-a6d0-68258d37c52c
+:END:
+#+title: Gospel tuple lens
+When we want to claim ownership of a tuple in [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]], we can use the ~*~
+operator in our lenses.  For example:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+val f : int array * int array -> unit
+(*@ consumes arrs @ int array * int * array
+    let _ = f arrs *)
+#+end_example
