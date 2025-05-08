@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       ec9ef3b1-d704-4ccf-8d16-7d98371b148c
+:END:
+#+title: Gospel ownership clauses
+
+In [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]], when we want to talk about ownership of mutable values, we
+use the ~consumes~ and ~produces~ clauses: these indicate that a function
+receives and returns ownership of a give value, respectively.  This
+has the following implications for typechecking:
+
+- If a value is consumed but not produced, we cannot use it in a
+  postcondition without wrapping it around an ~old~
+  annotation (Questionable).
+
+- If a value is produced but not consumed (this is always the case for return
+  values), it cannot be used in a precondition.
+
+There are two extra ownership clauses: ~modifies~ and ~preserves~: these
+are simply syntactic sugar for a ~consumes~ and ~produces~ clause.  The
+~preserves~ clause also indicates that the value remains unchanged.

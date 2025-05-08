@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       31e9f9d7-e378-45c1-a2d4-f8e24a3ea416
+:END:
+#+title: OCaml value specifications in Gospel
+Currently, OCaml values are processed in the following way:
+
+- If they do not have a [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] specification attached to them, they
+  are ignored by the type checker and do not appear in the final typed
+  AST.  This is useful since it allows users to have constructs that
+  are not supported by Gospel in their .mli files as long as they are
+  never referred to in Gospel specifications.
+
+- [[id:82f9754c-85f3-44bf-a75b-49d0a5f8331c][Lenses]] are not an explicit syntactic construct, they are, for now,
+  an internal mechanism that allows us to turn an OCaml type into its
+  [[id:79d0fef4-20f0-45af-9b03-e189534b420c][Gospel model]].
+
+- In the typed AST, we do not have ~consumes~ or ~produces~ clauses.
+  Rather, we couple each variable with their OCaml type, their Gospel
+  type and a flag that checks if it is read only.  This makes it
+  easier to generate the Separation Logic semantics for the
+  specifications since the information regarding each variable is
+  not scattered in 4 different lists but rather combined in one record.
