@@ -6,17 +6,17 @@
 When we use an OCaml type in a [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]] specification, we must turn the
 it into a valid Gospel type.
 
+- Type name applications are instantiated with their respective
+  [[id:79d0fef4-20f0-45af-9b03-e189534b420c][models]].  Currently, this is done without [[id:82f9754c-85f3-44bf-a75b-49d0a5f8331c][lenses]].  If the type name
+  does not have a model associated with it (or if any of the types
+  used as parameters don't have a valid OCaml representation) then
+  values of this type cannot be used in Gospel specifications.
+
 - Type variables are unmodified.
   Problem: It is unclear how [[id:001a1968-b268-4130-ae5a-0919897ed573][OCaml type variables]] should be treated in
   Gospel specifications since these can be instantiated with any OCaml
   type, including impure ones.  Therefore, the type checking
   implications are not clear.
-
-- Type names applications are instantiated with their respective
-  [[id:79d0fef4-20f0-45af-9b03-e189534b420c][models]].  Currently, this is done without [[id:82f9754c-85f3-44bf-a75b-49d0a5f8331c][lenses]].  If the type name
-  does not have a model associated with it (or if any of the types
-  used as parameters don't have a valid OCaml representation) then
-  values of this type cannot be used in Gospel specifications.
 
 - OCaml tuples are turned into tuples of the respective Gospel
   representations of the tuple elements.  If any of them do not have a

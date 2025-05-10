@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       ddcf1954-5cd7-40e2-9a62-c33dd73a7d24
+:END:
+#+title: OCaml values in Gospel terms
+Most of the time, OCaml values, are not allowed to be used in [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]]
+terms.  The only exception is within [[id:31e9f9d7-e378-45c1-a2d4-f8e24a3ea416][OCaml value specifications]] when
+they are explicitly consumed, produced or preserved.  Otherwise, they
+are not considered to be in scope and are not allowed to be used.
+Within the Gospel term, they their type is their corresponding logical
+representation.
