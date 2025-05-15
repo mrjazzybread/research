@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       05941737-cdba-4c1b-aadd-cbaa7d22e0fd
+:END:
+#+title: Specifications for pure higher functions
+In [[id:27926a9e-056a-43bb-886e-37f4a973bf98][Gospel]], when we have a higher order function such as:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+val init : int -> (int -> 'a) -> 'a list
+#+end_example
+It is tempting to write a specification such as:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+val init : int -> (int -> 'a) -> 'a list
+(*@ let r = init len f in
+    ensures r = Sequence.init len f *)
+#+end_example
+This is, naturally, unsound as the function ~f~ could potentially
+perform some kind of impure behaviour such as diverging or raising an
+exception.  In order for this to be valid, we must restrict ~f~ so that
+it is a pure function.  This means:
+
+- It cannot diverge
+- It cannot raise an exception
+- It cannot modify any state variables
+- It cannot read from or write to any mutable top level variables.
+
+Even if the function is pure, however, it is still not necessarily
+allowed to be used in Gospel specifications since in Gospel terms we
+are only allowed to use Gospel values.  At first glance, this would
+mean that the only OCaml functions that could be used in
+specifications would be those whose arguments and return values are
+[[id:259dc44f-ed8b-4851-8f33-7a4088ab9b83][isomorphic their logical representations]].  This would be highly
+restrictive since most OCaml types (including ~int~, ~option~ and ~list~) do
+not satisfy this condition.
+
+One way of easing this restriction is assuming that, for each pure
+OCaml function there exists a Gospel function with the same name that
+receives as arguments the [[id:79d0fef4-20f0-45af-9b03-e189534b420c][model]] of the OCaml arguments and returns
+the ~model~ of the OCaml return values.  For example:
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+val double : int -> int
+(*@ let y = double x in
+    ensures x * 2 = y *)
+#+end_example
+Would be reflected as an abstract function where the specification
+remains the same and we use the ~integer~ type for the argument and
+return type.
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+(*@ function double (x : integer) : integer
+    ensures x * 2 = result *)
+#+end_example
+Generally, this reflection could be assumed for some arbitrary
+function ~f~ if:
+- Every argument and return value has a logical representation.
+- The predicates that relate each value to their ~model~ are not allowed
+  to use any ownership predicates (e.g. points to).
+- The predicates that relate each argument to their ~model~ must be
+  surjective.  This would mean that the ~double~ example would be
+  invalid if assume values of type ~int~ are not ideal integers since
+  the specification for ~double~ would only be well defined for a
+  certain range of ~integer~ values.
