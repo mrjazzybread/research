@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       23489f33-2242-4490-b291-059864070e09
+:END:
+#+title: Refinement composition logic
+
+Refinement specifies an excellent goal which is easier to understand
+and more useful.
+
+To do this, we would need refinement composition, which can be complex
+for large programs.
+
+Separation logic constructs can be modelled in refinement frameworks
+except for the persistence modality.

@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       14b18c79-99e3-494f-ad00-ad90b64061f0
+:END:
+#+title: Verifying a high-performance distributed transaction system using partially consistent replication
+* Motivation
+
+A transaction system is one where transactions happen in a distributed
+environment, although to the user, it appears to happen in a single
+system.
+
+* Goal
+
+Verification and implementation of a transaction system at an
+implementation level.

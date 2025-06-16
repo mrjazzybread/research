@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       8401514e-d858-4411-b269-88162fe514ea
+:END:
+#+title: Exceptional refinements: a separation logic for compositionally proving refinements of programs with exceptions
+* Motivation
+
+Proving refinements is complicated due to quantification.
+
+The solution is to define a logical refinement by recursion on the
+type.
+
+* Goal
+
+Do that, but with exceptions
+
+* Labels
+
+Easy to encode, not going to be considered in this talk.
+
+* Refinement
+
+Refine a find function specifications of a function that returns an
+option into one with exceptions.
+
+Issue: the two functions have different types.
+
+For try-catch, we state that the there is some postcondition for the
+try catch (seems in practice similar to protocols).

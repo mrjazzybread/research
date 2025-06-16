@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       c594a9fb-fb4e-4fc1-bdc2-89ba90f5364e
+:END:
+#+title: A framework for the verification of concurrent OCaml 5
+* Motiviation
+
+At the start of the research, heap lang was used but it lacks too many
+basic abstractions such as records.
+
+To bridge these gaps, Zoo was developed.

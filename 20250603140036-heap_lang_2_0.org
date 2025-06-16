@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       dedaeca5-ba2c-4575-b706-02919164bc8e
+:END:
+#+title: Heap Lang 2.0
+* Motivation
+
+A researcher wants to verify something complicated like data races or
+networks.
+
+To do this, users have to define their own custom languages
+
+Heap lang is neat, but not very extensible.
+
+Heap lang = memory model + pure \lambda-calculus
+
+* Semantic extensions
+
+Semantic extensions include extensions to the effects allowed.
+
+To compose semantic extensions, the memory model must be aware of
+other extensions.  Must universally quantify over extensions.
+
+* Itrees
+
+what are they
+
+* Atomic operations
+
+There are many atomic operations which every memory model would have
+to re-implement all these.
+
+Atomic blocks allow to reuse atomic operations in different memory
+models (not very detailed explanation).
+
+Atomic triples are just regular triples with a token that witnesses
+that this is an atomic operation.

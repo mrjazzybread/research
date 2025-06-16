@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       3c914fe9-eb5a-4ba9-8bc2-20cfccafe87e
+:END:
+#+title: RefinedRust: high-assurance verification of Rust programs
+* Rust
+
+Folks, it's a language.
+
+* RefinedRust
+
+To turn rustbelt, A semantic model for rust, into a verification tool,
+it is combined with refinedc.
+
+* Goal
+
+Verify memory safety of unsafe code and functional correctness.
+
+* How does RefinedRust work
+
+Rust code is combined with user annotations and is compiled wiht the
+rust compiler and the refined rust frontend.  RefinedRust
+specifications are turned into types.

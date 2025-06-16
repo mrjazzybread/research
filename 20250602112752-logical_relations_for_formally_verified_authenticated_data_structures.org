@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       52c4e36d-bcec-4510-ae5d-d47b6cc96191
+:END:
+#+title: Logical relations for formally verified authenticated data structures
+* Motivation
+
+Outsourcing data to outside parties without losing data integrity.
+
+Authenticated data structures can be compiled from the
+non-authenticated implementation.
+
+Authenticated data structures could be implemented as a library
+
+* Goals
+
+Creating two logical relations and a proof of security and correctness
+of this library.
+
+Verifying a particular client of this library is not difficult, the
+tricky is thing is to prove that any well typed client is well behaved.
+
+* Approach
+
+To show security and correctness, they define a new Separation Logic
+binary and ternary relations for security and correctness.
+
+
+* Collision free reasoning
+
+Introduces a hashed resource which assumes no hash collisions.

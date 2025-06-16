@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       a912fc15-d951-44d8-9310-0aa82a512b83
+:END:
+#+title: Type variable scope in Gospel
+
+
+Similar to OCaml, Gospel does not require users to explicitly bind
+type variables.  Instead, when a user inserts a type annotation with a
+type variable, it is assumed that it is defined at the top to the
+corresponding Gospel structure.  A few examples:
+* Axiom
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+axiom hd :
+  forall s : 'a sequence.
+  length s > 0 ->
+  s[0] = Sequence.hd s
+#+end_example
+Is defined in Coq as:
+#+ATTR_LATEX: :environment cfml
+#+begin_example coq
+Axiom hd :
+  forall A (s : A sequence).
+  length s > 0 ->
+  s[0] = Sequence.hd s
+#+end_example
+
+* Gospel Function
+#+ATTR_LATEX: :environment ocamlenv
+#+begin_example ocaml
+ function hd (s : 'a sequence) : 'a
+#+end_example
+
+Is defined in Coq as:
+#+ATTR_LATEX: :environment cfml
+#+begin_example coq
+ Definition hd (A : Type) (s : A sequence) : A
+#+end_example

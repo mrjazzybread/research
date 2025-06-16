@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       4b873c62-7879-4678-a8ec-40cb4bd7c6a6
+:END:
+#+title: RefinedProsa Connecting Response-Time Analysis with C Verification for Interrupt Free Schedulers
+* Motivation
+
+Timing correctness is crucial for real time system.
+
+Schedualibility analysis checks f the abstract modal is free of errors,
+but provides no guarantees that the abstract model coincides with the
+concrete implementation.
+
+Interrupt free schedulers are common in practice for reasons.
+
+* Contribution
+
+RefinedProsa: a connection between refinedC and Rocq
+
+* Proof overview
+
+How to reason over time in C, an untimed language?
+
+We create marker functions that are associated with time stamps.
+
+* Rossl's scheduling loop
+
+Use marker functions to define basic actions
+
+* Rocq
+
+We associate the list of marker functions with a list of timestamps.

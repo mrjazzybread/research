@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       ecf1188d-b617-499d-8cc9-f1b4a346a664
+:END:
+#+title: Towards Formal Semantics and Reasoning for OCaml
+* Lol
+
+Washed up Psycho Remy So So tries to convince people that he actually
+does research.  I've seen him in real life, he doesn't.
