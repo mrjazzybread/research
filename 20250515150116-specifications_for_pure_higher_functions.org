@@ -62,7 +62,7 @@ expressed as an abstract Gospel function such as:
 #+ATTR_LATEX: :environment ocamlenv
 #+begin_example ocaml
 (*@ function reverse (x : char sequence) : char sequence
-    ensures x * 2 = result *)
+    ensures Sequence.rev x = result *)
 #+end_example
 Generally, this reflection could be assumed for some arbitrary
 function if:

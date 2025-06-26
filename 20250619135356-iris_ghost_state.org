@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       9302f304-0f63-42c3-81e9-36cbd12ce93f
+:END:
+#+title: Iris ghost state
+With only [[id:9c73122e-7158-447c-a486-9449a30a7da5][Iris invariants]], we are very limited in expressing how the
+state changes over time.
+
+In order to express that memory location will never point to a certain
+value, we can use ghost state.
+
+If we want to prove a concurrent program where a memory location is
+shared across two threads and can change over time, we must use two
+additional primitive resource propositions: \[S\] and \[F\].  The
+invariant starts out holding the \[S\] proposition.  Once in holds the
+\[F\] proposition, it can never go back to \[S\].
+
+Some important definitions:
+
+* Commutative semigroup
+
+A set \[M\] together with a commutative and associative function
+function (\[\dot\]): \[M\times M \xrightarrow{} M\].
+
+A commutative semigroup is called a commutative monoid if there is an
+element \epsilon.
+
+The set \[M\] is called the carrier.
+
+a \preccurlyeq b states that a is a part of b
+
+* Resource Algebra
+
+A resource algebra is a commutative semigroup \[M\] together with a
+subset \[V \subseteq M\] of elements called /valid/ and a /partial/
+function \[\dot\] called the /core/.

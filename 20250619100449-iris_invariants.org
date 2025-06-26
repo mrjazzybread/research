@@ -1,0 +1,24 @@
+:PROPERTIES:
+:ID:       9c73122e-7158-447c-a486-9449a30a7da5
+:END:
+#+title: Iris invariants
+
+In [[id:156425db-a11c-4efb-8bdc-3fedbe4a7268][Iris]], in order to share spatial predicates among several threads,
+we use invariants: persistent resources.
+
+An invariant can be made out of any proposition, this means that we
+can create nested invariants.
+
+Hoare triples now have associated with them a precondition, a
+postcondition and the set of invariant names.
+
+The resources to run a program described by some Hoare Triple can
+either be in the precondition or in any of the invariants accessible
+by the triple.
+
+To open an invariant, we it must be in the set of invariant names we
+are allowed to access.  Once opened, it can be used for a single
+atomic step.  Additionally, it cannot be opened again.
+
+We need a stronger frame rule that allows us to frame a resource that
+is accessed later when the expression /e/ is an atomic expression.
