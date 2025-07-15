@@ -1,0 +1,152 @@
+:PROPERTIES:
+:ID:       fc835d5c-5fe3-4299-b153-2ba0a01cdb21
+:END:
+#+title: ADC
+* Resumo
+
+
+
+* Introduction
+
+"Although a doubly linked list is a fairly simple and well-known data
+structure, our goal is to demonstrate how to formally verify its
+implementation. This is because it is a mutable data structure, which
+means most of its operations have side effects."
+
+- O que é que significa "simples" neste contexto?  A estrutura pode
+  ser conceptualmente simples, mas ser complicada de raciocinar e
+  implementar.  Devíamos reforçar esta ideia.
+
+- A complexidade de uma /doubly linked list/ não vem de ser mutável
+  (existem varias estruturas de dados mutáveis simples de implementar
+  e raciocinar) mas sim do fato de termos sempre vários apontadores
+  para os mesmos blocos.
+
+- /Doubly linked lists/ não são necessariamente mutáveis.  Devemos
+  referir isto explicitamente.  Também deves referir que a tua
+  implementação é circular
+
+"To formally verify it we need to use what is called separation logic,
+which is a type of logic that allows us to reason about mutable data
+structures or just mutable data in general."
+
+- Também consegues raciocinar sobre dados mutáveis só com Lógica de Hoare.
+  A motivação especifica para Lógica de Separação é que é mais fácil
+  falar sobre separação de dados mutáveis em memória.
+
+"It is still very time consuming to verify code like this manually
+on the spot."
+
+- Não percebo esta frase.  Estás a falar de testes?
+
+"One of our goals is to provide a formally verified implementation of
+a doubly linked list so that anyone can then use this data structure without the
+need to worry about its correctness. Besides that our work also contributes as
+an additional example of how to perform proofs on mutable code using CFML,
+allowing anyone to use it as a reference for their own work."
+
+- Acho que isto já não é motivação, isto devia estar no
+  "contributions"
+
+- Acho que seria uma boa ideia tirar esta parte e adicionar algo onde
+  explicitas o problema concreto que o projecto está a tentar
+  resolver.
+
+* Background
+
+** OCaml
+
+"OCaml supports mostly functional programming while also possessing
+imperative features such as refs, which work like a pointer or
+reference in an imperative language
+
+- Esta frase é um bocado estranha, preferia: "OCaml also supports many
+  imperative language features such as mutable data cells".
+
+"It is a location in memory whose contents may change. Refs are also
+called ref cells, the idea being that there’s a cell in memory that
+can change"
+
+- Tirar
+
+** Gospel
+"effects"
+
+- Temos de têr cuidado com esta palavra, "effects" pode significar
+  muita coisa.  Neste caso, deves tirar.
+
+** Rocq
+
+Honestamente, não sei se esta secção devia exitir
+
+"Its own set of built-in features is extremely small"
+
+- Não concordo com esta frase :|
+
+"Due to Rocq and Gallina’s flexible nature, the separation logic
+framework we used to verify our doubly linked list is implemented on top of
+Rocq’s kernel."
+
+- Dizer que CFML foi implementado em cima é estranho
+
+** Hoare Logic
+
+"The main concept of this logic is the Hoare triple"
+
+- Mudar para "this logic are /Hoare triples/"
+
+"In Hoare Logic it is important to note that P and Q denote the
+entire memory state of a program"
+
+- Hoare Logic não te obriga a meter o estado de memoria do programa
+  inteiro.
+
+"if P holds in S, then after executing S, Q will hold"
+
+- Devias também referir que no teu projeto estamos só a lidar com
+  correção parcial, por isso /S/ pode divergir.
+
+** Separation Logic
+
+Acho que em vez de mostrar a regra de inferência para a /frame rule/
+seria melhor explicar o que é que a regra significa só com texto.
+Também, para a frame rule devias utilizar o /emph/. Também devias têr um
+frase a explicar o que é que é a /separating conjunction/
+
+** CFML
+
+"The first one is a front-end tool that parses OCaml source
+code and generates a corresponding AST in Rocq."  Falta informação.
+Em vez de dizer que gera uma AST, diz que gera uma codificação do
+programa OCaml em Rocq que podemos utilizar no processo de prova.
+
+* Doubly Linked List - Design and Implementation
+
+** Design
+
+Manter o texto da subsecção mas eliminar a subsecção
+
+"We designed" - We implemented
+
+** Implementation
+"we decided to define 3 main types:"
+
+We defined the following types:
+
+No bullet do ~innerNode~, usa a macro ~textt~ para o ~Nil~ e ~Cons~.
+
+No bullet ~dblist~, innerNodes devia estar com a macro ~textt~.
+
+O bloco de código devia ser uma figura
+
+"The full implementation can be consulted in the project’s Artifact Compan-
+ion [10]."
+
+- Não devia ser uma referência bibliográfica, devias pôr
+como nota de rodapé
+
+"Starting with the josephus operation, it is a well-known problem in Com-
+puter Science. The original problem is as follows"
+
+- Para não repetires ~problem~ duas vezes, podes dizer:  "We start with
+  the "

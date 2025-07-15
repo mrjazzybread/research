@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       dc86b6fa-3c4c-4c77-ac8f-2b116b69b06e
+:END:
+#+title: Inforum Review
+Reviewer confidence: 2
+
+This paper implements secure communication protocols in FreeST, a
+functional programming language.  The authors leverage FreeST modules
+and session types to implement a symmetric key exchange protocol, an
+encryption algorithm and an asymmetric key authentication algorithm.
+This also entailed the development of a random number generation and
+arbitrary-precision integers.
+
+The paper is well written: it properly explains session types,
+symmetric and asymmetric encryption and the Diffie-Hellman protocol as
+well showing how all these components fit together.  The way code
+listing are used within the paper is illustrative and helps guide the
+user in understanding the overall contribution.
+
+* Issues
+
+The authors do not explain the benefits of using FreeST to implement
+this algorithm as opposed to a more mainstream programming language.
+My understanding was the existence of session types as well as secure
+channels.  As for the former, it is my understanding that there are
+more widely used languages that support them (perhaps less
+expressively than FreeST, but again, this is something that the
+authors should have noted).  As for the latter, the authors do not
+state how/if these differ from other implementations.  The use of
+FreeST should be better motivated.
+
+The appendix is far too large; the platonic ideal for an appendix is
+to give some additional context that is not strictly necessary but can
+be useful for a deeper understanding of the paper.  The authors chose
+however to dump every implementation into it, diluting it with mostly
+irrelevant code.  Given this, I ignored this paper's appendix.
+
+It is unclear what the novel scientific contribution for this paper
+is.  From what I can infer, the contributions of this work is the
+addition of secure communication in FreeST with certain compile-time
+checks to ensure that communication is done securely as well as
+additions to FreeST to enable secure communication.  However, due to
+the lack of a related work section, I do not know how this work
+compares to the existing state of the art.  Are there any other
+implementations of a secure cryptographic (or, more generally
+communication) protocol with strong compile-time guarantees?  And if
+so, how does this compare to them?
+
+* Typos and other issues
+
+- Page 1: There should be no comma after "first step".
+- Page 1: We have propose -> we propose
+- Page 2: Which allow -> which allows
+
+Some code listing are split across two pages i.e. pages 9 - 10 and
+pages 11-12.

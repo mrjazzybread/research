@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       0d247008-7cb3-4b43-92a3-5b25e0d6972d
+:END:
+#+title: Formal Semantics & Program Logics for a Fragment of OCaml
+* Contributions
+
+- Using [[id:04859df3-6922-4c19-b7f2-ce7988a4484b][Rocq]] to formalize the semantics of OLang, a sequential
+  fragment of [[id:b3f8eb53-1b01-487c-aeaa-4d8c7574e836][OCaml]].
+- A translation of OCaml to OLang.
+- Two program logics, Horus and [[id:19514cee-4f8b-4dd9-a19f-2b5a4dfc86f0][Osiris]], to reason over OLang.  The
+  former reasons over pure programs while the other reasons over
+  effectful programs.  Proofs in one logic can be used in another.
+
+Osiris is the first program logic to support OCaml's combination of
+effects and exceptions.
+
+* Architecture and Design
